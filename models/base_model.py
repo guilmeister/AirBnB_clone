@@ -6,10 +6,13 @@ asdsada
 
 import uuid
 import datetime
+import json
+from models.__init__ import storage
 
 class BaseModel:
 
     def __init__(self, *args, **kwargs):
+        #if it is a new instance add a call to the method new(self)
         if kwargs:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
@@ -24,13 +27,14 @@ class BaseModel:
             self.updated_at = datetime.datetime.now()
 
     def __str__(self):
-        string = "[{}] ({}) <{}>".format(self.__class__.__name__,
+        string = "[{}] ({}) {}".format(self.__class__.__name__,
                                          self.id,
                                          self.__dict__)
         return string
 
     def save(self):
         self.updated_at = datetime.datetime.now()
+        #call save(self) method of storage
 
     def to_dict(self):
         my_dict = {'my_number': self.my_number,
