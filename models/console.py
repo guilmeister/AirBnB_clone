@@ -18,7 +18,12 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) < 1:
             print("** class name missing **")
 
+    def emptyline(self):
+        """Called when an empty line is entered"""
+        pass
+
     def help(self, arg):
+        """Help command to describe the function\n"""
         pass
 
 if __name__ == '__main__':
