@@ -7,7 +7,7 @@ asdsada
 import uuid
 import datetime
 import json
-from models.__init__ import storage
+import models
 
 class BaseModel:
 
