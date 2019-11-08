@@ -8,14 +8,15 @@ import json
 
 class FileStorage:
 
-    __file_path = file.json
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
-    """Returns dictionary"""
+        """Returns the dictionary."""
         return __objects
 
     def new(self, obj):
+        """sets the objects with key"""
         self.__objects = obj.__class__.__name__.id
 
     def save(self):
