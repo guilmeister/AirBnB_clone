@@ -1,18 +1,17 @@
 #!/usr/bin/python3
 
 """
-asdsada
+This is the Baseline Class
+
 """
 
 import uuid
 import datetime
-import json
 import models
 
 class BaseModel:
 
     def __init__(self, *args, **kwargs):
-        #if it is a new instance add a call to the method new(self)
         if kwargs:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
@@ -25,6 +24,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         string = "[{}] ({}) {}".format(self.__class__.__name__,
@@ -34,13 +34,11 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.datetime.now()
-        #call save(self) method of storage
+        models.storage.save()
 
     def to_dict(self):
-        my_dict = {'my_number': self.my_number,
-                   'name': self.name,
-                   '__class__': self.__class__.__name__,
-                   'updated_at:': self.updated_at.isoformat(),
-                   'id': self.id,
-                   'created_at': self.created_at.isoformat()}
+        my_dict = self.__dict__.copy()
+        my_dict.update({'__class__': str(type(self).__name__)})
+        my_dict["updated_at"] = self.updated_at.isoformat()
+        my_dict["created_at"] = self.created_at.isoformat()
         return my_dict
