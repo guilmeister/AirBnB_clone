@@ -27,11 +27,14 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def do_destory(self, arg)
+    def do_destory(self, arg):
         """deletes an instance based on the class name and id"""
         if not arg:
             print("** class name missing **")
+            return
         ls_arg = arg.split(' ')
+        if ls_arg[0] not in ['BaseModel']:
+            print("** class doesn't exist **")        
         elif len(ls_arg ) is 1:
             print('** instance id missing **')
         else:
