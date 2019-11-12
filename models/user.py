@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 
-"""Defines class"""
+"""
+This is a module for the User class
+"""
 
-import models
+from models.base_model import BaseModel
+
 
 class User(BaseModel):
 

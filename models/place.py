@@ -1,7 +1,16 @@
 #!/usr/bin/python3
 
-class Place(BaseModel):
+"""
+This module is for Place Class
+"""
 
+from models.base_model import BaseModel
+
+
+class Place(BaseModel):
+    """
+    Class Place
+    """
     city_id = ""
     user_id = ""
     name = ""
