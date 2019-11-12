@@ -4,6 +4,7 @@ import unittest
 from models import storage
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+import models
 import os
 
 
@@ -25,25 +26,27 @@ class TestFileStorage(unittest.TestCase):
         pass
 
     def test_all(self):
-      """ type of dictionary """
+        """ type of dictionary """
         storage.reload()
         self.assertEqual(type(self.dummy.all()), dict)
 
     def test_new(self):
         """ new method """
+
         storage.reload()
         self.dummy.new(BaseModel())
         self.assertTrue(self.dummy.all())
 
     def test_save(self):
         """ json file check """
+
         storage.reload()
         self.dummy.new(BaseModel())
         self.dummy.save()
         self.assertTrue(os.path.isfile("file.json"))
 
     def test_reload(self):
-      """ reload method """
+        """ reload method """
 
         storage.reload()
         my_model = BaseModel()
