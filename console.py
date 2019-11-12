@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
             ls_arg[3] = ls_arg[3].strip('\"')
             if ls_arg[3].isdigit():
                 ls_arg[3] = int(ls_arg[3])
-            elif ls_arg.isfloat():
+            elif ls_arg.isdecimal():
                 ls_arg[3] = float(ls_arg[3])
             setattr(model, ls_arg[2], ls_arg[3])
 
