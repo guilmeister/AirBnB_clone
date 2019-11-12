@@ -34,7 +34,7 @@ class TestBaseClass(unittest.TestCase):
         print('teardown')
         return super().tearDown()
 
-        def instance_creation(self):
+    def instance_creation(self):
         """ Create instance of Class Base Model name, number & class type."""
 
         self.assertTrue(type(self.dummy), BaseModel) 
@@ -59,19 +59,19 @@ class TestBaseClass(unittest.TestCase):
         self.assertTrue(hasattr(self.dummy, "created_at"))
         self.assertTrue(hasattr(self.dummy, "updated_at"))
 
-def test_different_id(self):
+    def test_different_id(self):
         """ id should be different """
-        
+
         self.assertNotEqual(self.dummy1.id, self.dummy2.id)
         self.assertEqual(len(self.dummy1.id), len(self.dummy2.id))
 
-def test_strMethod(self):
+    def test_strMethod(self):
         """ check __str__ output """
 
         my_str = "[BaseModel] ({}) {}".format(self.dummy.id, self.dummy.__dict__)
         self.assertEqual(my_str, str(self.dummy))
 
-def test_save(self):
+    def test_save(self):
         """ save updated_at """
 
         dum1 = self.dummy.updated_at
@@ -79,7 +79,7 @@ def test_save(self):
         dum2 = self.dummy.updated_at
         self.assertNotEqual(dum1, dum2)
 
-def test_to_dict(self):
+    def test_to_dict(self):
         """ dictionary conversion """
 
         self.dummy.name = "Akeem"
@@ -96,7 +96,7 @@ def test_to_dict(self):
         self.assertEqual(dicti["__class__"], "BaseModel")
         self.assertCountEqual(dicti.keys(), my_keys)
 
-def test_to_dict_attr(self):
+    def test_to_dict_attr(self):
         """ created_at, updated_at values """
 
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
