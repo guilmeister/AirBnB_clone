@@ -19,19 +19,26 @@ class TestBaseClass(unittest.TestCase):
         """
         Create instance of Class Base Model name, number & class type.
         """
-        creation_inst = BaseModel()
-        self.assertTrue(type(creation_inst), BaseModel) 
-        creation_inst.name = "Holberton"
-        self.assertEqual(creation_inst, "Holberton")
-        self.assertTrue(type(creation_inst.name), str)
+        dummy = BaseModel()
+        self.assertTrue(type(dummy), BaseModel) 
+        dummy.name = "Holberton"
+        self.assertEqual(dummy, "Holberton")
+        self.assertTrue(type(dummy.name), str)
         self.my_number = 89
-        self.assertEqual(creation_inst.my_number, 89)
-        self.assertEqua(type(creation_inst.my_number),int)
+        self.assertEqual(dummy.my_number, 89)
+        self.assertEqua(type(dummy.my_number),int)
 
     def instance_creation2(self):
         """ Checking id, created and updated  *_at"""
-        creation_inst = BaseModel()
-        self.assertEqual(type(creation_inst.id), str)
-        self.assertEqual(type(creation_inst.created_at), datetime)
-        self.assertEqual(type(creation_inst.updated_at), datetime)
+        dummy = BaseModel()
+        self.assertEqual(type(dummy.id), str)
+        self.assertEqual(type(dummy.created_at), datetime)
+        self.assertEqual(type(dummy.updated_at), datetime)
+        
+    def default_attributes(self):
+        """ id, created_at, updated_at default attributes """
+        dummy = BaseModel()
+        self.assertTrue(hasattr(dummy, "id"))
+        self.assertTrue(hasattr(dummy, "created_at"))
+        self.assertTrue(hasattr(dummy, "updated_at"))
 
