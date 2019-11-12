@@ -8,7 +8,12 @@ import cmd
 import inspect
 import models
 from models.base_model import BaseModel
-
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -39,6 +44,30 @@ class HBNBCommand(cmd.Cmd):
             b = BaseModel()
             b.save()
             print(b.id)
+        elif arg == 'User':
+            u = User()
+            u.save()
+            print(u.id)
+        elif arg == 'State':
+            s = State()
+            s.save()
+            print(s.id)
+        elif arg == 'City':
+            c = City()
+            c.save()
+            print(c.id)
+        elif arg == 'Amenity':
+            a = Amenity()
+            a.save()
+            print(a.id)
+        elif arg == 'Place':
+            p = Place()
+            p.save()
+            print(p.id)
+        elif arg == 'Review':
+            r = Review()
+            r.save()
+            print(r.id)
         else:
             print("** class doesn't exist **")
 
@@ -51,7 +80,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         ls_arg = arg.split(' ')
-        if ls_arg[0] not in ['BaseModel']:
+        if ls_arg[0] not in ['BaseModel', 'User', 'State',
+                             'City', 'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
         elif len(ls_arg) is 1:
             print('** instance id missing **')
@@ -72,7 +102,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         ls_arg = arg.split(' ')
-        if ls_arg[0] not in ['BaseModel']:
+        if ls_arg[0] not in ['BaseModel', 'User', 'State',
+                             'City', 'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
         elif len(ls_arg) is 1:
             print('** instance id missing **')
@@ -88,16 +119,23 @@ class HBNBCommand(cmd.Cmd):
         Function that has All command to show all instances
         based on the class name\n
         """
+        if len(arg) == 0:
+            for key in models.storage.all():
+                obj = models.storage.all()[key]
+                print(obj)
+            return
         if not arg:
             print("** class name missing **")
             return
         ls_arg = arg.split(' ')
-        if ls_arg[0] not in ['BaseModel']:
+        if ls_arg[0] not in ['BaseModel', 'User', 'State',
+                             'City', 'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
         else:
             for key in models.storage.all():
                 obj = models.storage.all()[key]
-                print(obj)
+                if obj.__class__.__name__ == ls_arg[0]:
+                    print(obj)
 
     def do_update(self, arg):
         """
@@ -109,7 +147,8 @@ class HBNBCommand(cmd.Cmd):
         if not ls_arg:
             print("** class name missing **")
             return
-        if ls_arg[0] not in ['BaseModel']:
+        if ls_arg[0] not in ['BaseModel', 'User', 'State',
+                             'City', 'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
         elif num_arg is 1:
             print("** instance id missing **")
@@ -124,8 +163,6 @@ class HBNBCommand(cmd.Cmd):
             ls_arg[3] = ls_arg[3].strip('\"')
             if ls_arg[3].isdigit():
                 ls_arg[3] = int(ls_arg[3])
-            elif ls_arg.isdecimal():
-                ls_arg[3] = float(ls_arg[3])
             setattr(model, ls_arg[2], ls_arg[3])
 
     def emptyline(self):
