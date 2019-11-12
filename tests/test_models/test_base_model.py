@@ -34,7 +34,7 @@ class TestBaseClass(unittest.TestCase):
         print('teardown')
         return super().tearDown()
 
-    def instance_creation(self):
+    def test_instance_creation(self):
         """ Create instance of Class Base Model name, number & class type."""
 
         self.assertTrue(type(self.dummy), BaseModel) 
@@ -45,14 +45,14 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(self.dummy.my_number, 89)
         self.assertEqua(type(self.dummy.my_number),int)
 
-    def instance_creation2(self):
+    def test_instance_creation2(self):
         """ Checking id, created and updated  *_at"""
 
         self.assertEqual(type(self.dummy.id), str)
         self.assertEqual(type(self.dummy.created_at), datetime)
         self.assertEqual(type(self.dummy.updated_at), datetime)
         
-    def default_attributes(self):
+    def test_default_attributes(self):
         """ id, created_at, updated_at default attributes """
 
         self.assertTrue(hasattr(self.dummy, "id"))
