@@ -1,32 +1,53 @@
+#!/usr/bin/python3
+
+"""
+Unittesting for class Amenity
+"""
+
 from datetime import datetime
 import inspect
-import models
-from models import amenity
+from models import Amenity
 from models.base_model import BaseModel
 import unittest
 
+
 class TestAmenity(unittest.TestCase):
-    """Test the Amenity class"""
+    """
+    Test the Amenity class
+    """
     def setUp(self):
+        """
+        Run prior to each test in the class
+        """
         print('setup')
-        self.dummy_amenity = amenity()
+        dummy_amenity = Amenity()
+        dummy_amenity.name = "Yerba Mate"
 
     def tearDown(self):
+        """
+        Run at end of every test
+        """
         pass
 
     def test_is_subclass(self):
-        """Test that Amenity is a subclass of BaseModel"""
+        """
+        Test that Amenity is a subclass of BaseModel
+        """
         self.assertIsInstance(self.dummy_amenity, BaseModel)
         self.assertTrue(hasattr(self.dummy_amenity, "id"))
         self.assertTrue(hasattr(self.dummy_amenity, "created_at"))
         self.assertTrue(hasattr(self.dummy_amenity, "updated_at"))
 
     def test_name_attr(self):
-        """Test that Amenity has attribute name, and it's as an empty string"""
-        self.assertTrue(hasattr(self.dummy_amenity, "name")
+        """
+        Test that Amenity has attribute name, and it's as an empty string
+        """
+        self.assertTrue(hasattr(self.dummy_amenity, "name"))
 
     def test_to_dict_creates_dict(self):
-        """test to_dict method creates a dictionary with proper attrs"""
+        """
+        Test to_dict method creates a dictionary with proper attrs
+        """
         am = amenity()
         new_d = am.to_dict()
         self.assertEqual(type(new_d), dict)
@@ -37,7 +58,9 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue("__class__" in new_d)
 
     def test_to_dict_values(self):
-        """test that values in dict returned from to_dict are correct"""
+        """
+        Test that values in dict returned from to_dict are correct
+        """
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         am = amenity()
         new_d = am.to_dict()
@@ -48,6 +71,9 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(new_d["updated_at"], am.updated_at.strftime(t_format))
 
     def test_str(self):
-        """test that the str method has the correct output"""
-        string = "[Amenity] ({}) {}".format(self.dummy_amenity.id, self.dummy_amenity.__dict__)
+        """
+        Test that the str method has the correct output
+        """
+        string = "[Amenity] ({}) {}".format(self.dummy_amenity.id,
+                                            self.dummy_amenity.__dict__)
         self.assertEqual(string, str(self.du_amenitymmy))

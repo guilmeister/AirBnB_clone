@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from datetime import datetime
 import inspect
 import models
@@ -62,3 +63,58 @@ class TestCity(unittest.TestCase):
 
         string = "[City] ({}) {}".format(city.id, city.__dict__)
         self.assertEqual(string, str(city))
+=======
+#!/usr/bin/python3
+
+"""
+Unittesting for class City
+"""
+
+import unittest
+from models.base_model import BaseModel
+from models.city import City
+
+
+class TestCityClass(unittest.TestCase):
+    """
+    Test City Class unittesting
+    """
+    @classmethod
+    def setUpClass(cls):
+        """
+        Run prior to each test
+        """
+        print('setupClass')
+
+    @classmethod
+    def tearDownClass(cls):
+        """
+        Run at end of test
+        """
+        print('teardownClass')
+        return super().tearDownClass()
+
+    def setUp(self):
+        """
+        Run setup method prior to each test in class
+        """
+        print('setup')
+        self.self.dummy = City()
+        self.self.dummy1 = City()
+        self.self.dummy2 = City()
+
+    def tearDown(self):
+        """
+        Run after end of each test in class
+        """
+        print('teardown')
+        return super().tearDown()
+
+    def instance_creation(self):
+        """
+        create instance of class
+        """
+        ci = City()
+        ci.state_id = "CA"
+        ci.name = "California"
+>>>>>>> 9e9ff79953b8a848b9a995b2fe48e246eef9d0b4
