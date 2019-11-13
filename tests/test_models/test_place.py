@@ -5,6 +5,8 @@ Testing outputs for BaseModel
 """
 
 from models.base_model import BaseModel
+from models.place import Place
+import unittest
 
 
 class TestPlaceClass(unittest.TestCase):
