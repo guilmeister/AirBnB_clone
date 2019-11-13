@@ -35,7 +35,7 @@ class TestFileStorage(unittest.TestCase):
         """
         Run at start prior to each test in the class
         """
-        dummy = FileStorage()
+        self.dummy = FileStorage()
 
     def tearDown(self):
         """
