@@ -15,6 +15,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """
     This is a class Command Prompt
@@ -144,19 +145,17 @@ class HBNBCommand(cmd.Cmd):
         """
         ls_arg = arg.split(' ')
         num_arg = len(arg)
-        if not ls_arg:
+        if not arg:
             print("** class name missing **")
             return
         if ls_arg[0] not in ['BaseModel', 'User', 'State',
                              'City', 'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
-        elif num_arg is 1:
+        elif len(ls_arg) is 1:
             print("** instance id missing **")
-        elif num_arg < 3:
+        elif len(ls_arg) is 2:
             print("** attribute name missing **")
-        elif ls_arg[2] in ['id', 'created_at', 'update_at']:
-            pass
-        elif num_arg < 4:
+        elif len(ls_arg) is 3:
             print('** value missing **')
         else:
             model = models.storage.all()['.'.join(ls_arg[:2])]
