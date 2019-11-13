@@ -18,4 +18,7 @@ class TestReviewClass(unittest.TestCase):
         """
         Create instance of Class Place
         """
-        self.review = Review()
+        rev = Review()
+        rev.place_id = "place id"
+        rev.user_ud = "Holberton"
+        rev.text = "5 of 5 stars"

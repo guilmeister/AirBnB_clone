@@ -18,4 +18,5 @@ class TestStateClass(unittest.TestCase):
         """
         Create instance of Class State
         """
-        self.state = State()
+        stat = State()
+        stat.name = "California"

@@ -18,4 +18,8 @@ class TestUserClass(unittest.TestCase):
         """
         Create instance of Class User
         """
-        self.user = User()
+        user1 = User()
+        user1.first_name = "Edward"
+        user1.last_name = "Guillermo"
+        user1.email = "email@toolong.com"
+        user1.password = "notpassword"

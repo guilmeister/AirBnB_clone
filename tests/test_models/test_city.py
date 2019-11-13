@@ -43,3 +43,11 @@ class TestCityClass(unittest.TestCase):
         """
         print('teardown')
         return super().tearDown()
+
+    def instance_creation(self):
+        """
+        create instance of class
+        """
+        ci = City()
+        ci.state_id = "CA"
+        ci.name = "California"

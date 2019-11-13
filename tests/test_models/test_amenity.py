@@ -20,7 +20,8 @@ class TestAmenity(unittest.TestCase):
         Run prior to each test in the class
         """
         print('setup')
-        self.dummy_amenity = amenity()
+        dummy_amenity = Amenity()
+        dummy_amenity.name = "Yerba Mate"
 
     def tearDown(self):
         """
