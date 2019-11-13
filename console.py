@@ -28,6 +28,34 @@ class HBNBCommand(cmd.Cmd):
         """
         return True
 
+    def do_BaseModel(self, arg):
+        if arg == ".all()":
+            self.do_all("BaseModel")
+
+    def do_User(self, arg):
+        if arg == ".all()":
+            self.do_all("User")
+
+    def do_State(self, arg):
+        if arg == ".all()":
+            self.do_all("State")
+
+    def do_City(self, arg):
+        if arg == ".all()":
+            self.do_all("City")
+
+    def do_Amenity(self, arg):
+        if arg == ".all()":
+            self.do_all("Amenity")
+
+    def do_Place(self, arg):
+        if arg == ".all()":
+            self.do_all("Place")
+
+    def do_Review(self, arg):
+        if arg == ".all()":
+            self.do_all("Review")
+
     def do_quit(self, arg):
         """
         Function that has Quit command to exit the program\n
