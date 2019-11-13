@@ -1,17 +1,32 @@
-<<<<<<< HEAD
+#!/usr/bin/python3
+
 from datetime import datetime
 import inspect
-import models
-from models import city
+from models.city import City
 from models.base_model import BaseModel
 import unittest
 
 class TestCity(unittest.TestCase):
     """Test the City class"""
+    @classmethod
+    def setUpClass(cls):
+        """
+        Run prior to each test in class
+        """
+        print('SetupClass City')
+
+    @classmethod
+    def tearDownClass(cls):
+        """
+        Run at end after test
+        """
+        print('tearDownClass City')
+    
+    
     def setUp(self):
         print('setup')
-        self.city = city()
-        self.c = city()
+        self.city = City()
+        self.c = City()
  
     def tearDown(self):
         """teardown method"""
@@ -21,21 +36,14 @@ class TestCity(unittest.TestCase):
     def test_is_subclass(self):
         """Test that City is a subclass of BaseModel"""
 
-        self.assertIsInstance(city, BaseModel)
-        self.assertTrue(hasattr(city, "id"))
-        self.assertTrue(hasattr(city, "created_at"))
-        self.assertTrue(hasattr(city, "updated_at"))
+        self.assertIsInstance(self.city, BaseModel)
+        self.assertTrue(hasattr(self.city, "id"))
+        self.assertTrue(hasattr(self.city, "updated_at"))
 
     def test_name_attr(self):
         """Test that City has attribute name, and it's an empty string"""
 
-        self.assertTrue(hasattr(city, "name"))
-
-    def test_state_id_attr(self):
-        """Test that City has attribute state_id, and it's an empty string"""
-
-        self.assertTrue(hasattr(city, "state_id"))
-
+        self.assertTrue(hasattr(self.city, "name"))
     def test_to_dict_creates_dict(self):
         """test to_dict method creates a dictionary with proper attrs"""
         
@@ -61,60 +69,16 @@ class TestCity(unittest.TestCase):
     def test_str(self):
         """test that the str method has the correct output"""
 
-        string = "[City] ({}) {}".format(city.id, city.__dict__)
-        self.assertEqual(string, str(city))
-=======
-#!/usr/bin/python3
+        string = "[City] ({}) {}".format(self.city.id, self.city.__dict__)
+        self.assertEqual(string, str(self.city))
+    
+    def test_inheritence(self):
+        """Checks to make sure City inherits from BaseModel"""
 
-"""
-Unittesting for class City
-"""
+        self.assertTrue(issubclass(City, BaseModel))    
+    
+    def test_new_instances(self):
+        """Checks that new instances were created"""
 
-import unittest
-from models.base_model import BaseModel
-from models.city import City
-
-
-class TestCityClass(unittest.TestCase):
-    """
-    Test City Class unittesting
-    """
-    @classmethod
-    def setUpClass(cls):
-        """
-        Run prior to each test
-        """
-        print('setupClass')
-
-    @classmethod
-    def tearDownClass(cls):
-        """
-        Run at end of test
-        """
-        print('teardownClass')
-        return super().tearDownClass()
-
-    def setUp(self):
-        """
-        Run setup method prior to each test in class
-        """
-        print('setup')
-        self.self.dummy = City()
-        self.self.dummy1 = City()
-        self.self.dummy2 = City()
-
-    def tearDown(self):
-        """
-        Run after end of each test in class
-        """
-        print('teardown')
-        return super().tearDown()
-
-    def instance_creation(self):
-        """
-        create instance of class
-        """
-        ci = City()
-        ci.state_id = "CA"
-        ci.name = "California"
->>>>>>> 9e9ff79953b8a848b9a995b2fe48e246eef9d0b4
+        self.assertTrue(self.city)
+        self.assertTrue(self.city)
