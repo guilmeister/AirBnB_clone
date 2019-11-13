@@ -151,6 +151,7 @@ class HBNBCommand(cmd.Cmd):
         if ls_arg[0] not in ['BaseModel', 'User', 'State',
                              'City', 'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
+            return
         elif len(ls_arg) is 1:
             print("** instance id missing **")
             return
@@ -158,10 +159,13 @@ class HBNBCommand(cmd.Cmd):
         key = ls_arg[0] + "." + ls_arg[1]
         if key not in check_id:
             print("** no instance found **")
+            return
         elif len(ls_arg) is 2:
             print("** attribute name missing **")
+            return
         elif len(ls_arg) is 3:
             print('** value missing **')
+            return
         else:
             model = models.storage.all()['.'.join(ls_arg[:2])]
             ls_arg[3] = ls_arg[3].strip('\"')
