@@ -28,33 +28,63 @@ class HBNBCommand(cmd.Cmd):
         """
         return True
 
+    def count_instance_class(self, arg):
+        count = 0
+        ls_arg = arg.split(' ')
+        for key in models.storage.all():
+                obj = models.storage.all()[key]
+                if obj.__class__.__name__ == ls_arg[0]:
+                    count = count + 1
+        return count
+
     def do_BaseModel(self, arg):
         if arg == ".all()":
             self.do_all("BaseModel")
+        elif arg == ".count()":
+            counter = self.count_instance_class("BaseModel")
+            print(counter)
 
     def do_User(self, arg):
         if arg == ".all()":
             self.do_all("User")
+        elif arg == ".count()":
+            counter = self.count_instance_class("User")
+            print(counter)
 
     def do_State(self, arg):
         if arg == ".all()":
             self.do_all("State")
+        elif arg == ".count()":
+            counter = self.count_instance_class("State")
+            print(counter)
 
     def do_City(self, arg):
         if arg == ".all()":
             self.do_all("City")
+        elif arg == ".count()":
+            counter = self.count_instance_class("City")
+            print(counter)
 
     def do_Amenity(self, arg):
         if arg == ".all()":
             self.do_all("Amenity")
+        elif arg == ".count()":
+            counter = self.count_instance_class("Amenity")
+            print(counter)
 
     def do_Place(self, arg):
         if arg == ".all()":
             self.do_all("Place")
+        elif arg == ".count()":
+            counter = self.count_instance_class("Place")
+            print(counter)
 
     def do_Review(self, arg):
         if arg == ".all()":
             self.do_all("Review")
+        elif arg == ".count()":
+            counter = self.count_instance_class("Review")
+            print(counter)
 
     def do_quit(self, arg):
         """
