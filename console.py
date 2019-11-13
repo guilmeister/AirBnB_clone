@@ -153,6 +153,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(ls_arg) is 1:
             print("** instance id missing **")
+            return
+        check_id = models.storage.all()
+        key = ls_arg[0] + "." + ls_arg[1]
+        if key not in check_id:
+            print("** no instance found **")
         elif len(ls_arg) is 2:
             print("** attribute name missing **")
         elif len(ls_arg) is 3:
