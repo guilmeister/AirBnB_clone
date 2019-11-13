@@ -7,10 +7,11 @@ Testing outputs for BaseModel
 import unittest
 from datetime import datetime, date, time
 import uuid
+from models import storage
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
-
-
+import json
+import os
 class TestBaseClass(unittest.TestCase):
     """
     Test Base Model class unittesting
@@ -20,41 +21,42 @@ class TestBaseClass(unittest.TestCase):
         """
         Run prior to each test in class
         """
-        print('setupClass')
+        print('SetupClass Base')
 
     @classmethod
     def tearDownClass(cls):
         """
         Run at end after test
         """
-        print('teardownClass')
-        return super().tearDownClass()
+        print('tearDownClass Base')
 
     def setUp(self):
         """
         Initialize instances
         """
         print('setup')
-        self.self.dummy = BaseModel()
-        self.self.dummy1 = BaseModel()
-        self.self.dummy2 = BaseModel()
+        self.dummy = BaseModel()
+        self.dummy1 = BaseModel()
+        self.dummy2 = BaseModel()
 
     def tearDown(self):
         """
         Run at end after test
         """
-        print('teardown')
-        return super().tearDown()
+        print('teardown\n')
+        if os.path.exists("file.json"):
+            os.remove("file.json")
 
     def test_instance_creation(self):
         """
         Create instance of Class Base Model name, number & class type
         """
+        print('test_instance_creation')
         self.assertTrue(type(self.dummy), BaseModel)
         self.dummy.name = "Holberton"
-        self.assertEqual(self.dummy, "Holberton")
+        self.assertEqual(self.dummy.name, "Holberton")
         self.assertTrue(type(self.dummy.name), str)
-        self.my_number = 89
+        self.dummy.my_number = 89
         self.assertEqual(self.dummy.my_number, 89)
         self.assertEqual(type(self.dummy.my_number), int)
 
@@ -62,6 +64,7 @@ class TestBaseClass(unittest.TestCase):
         """
         Checking id, created_at and updated_at
         """
+        print('test_instance_creation2')
         self.assertEqual(type(self.dummy.id), str)
         self.assertEqual(type(self.dummy.created_at), datetime)
         self.assertEqual(type(self.dummy.updated_at), datetime)
@@ -70,6 +73,7 @@ class TestBaseClass(unittest.TestCase):
         """
         id, created_at, updated_at default attributes
         """
+        print('test_default_attribute')
         self.assertTrue(hasattr(self.dummy, "id"))
         self.assertTrue(hasattr(self.dummy, "created_at"))
         self.assertTrue(hasattr(self.dummy, "updated_at"))
@@ -78,6 +82,7 @@ class TestBaseClass(unittest.TestCase):
         """
         id should be different
         """
+        print('test_different_id')
         self.assertNotEqual(self.dummy1.id, self.dummy2.id)
         self.assertEqual(len(self.dummy1.id), len(self.dummy2.id))
 
@@ -85,6 +90,7 @@ class TestBaseClass(unittest.TestCase):
         """
         check __str__ output
         """
+        print('test_strMethod')
         my_str = "[BaseModel] ({}) {}".format(self.dummy.id,
                                               self.dummy.__dict__)
         self.assertEqual(my_str, str(self.dummy))
@@ -93,6 +99,7 @@ class TestBaseClass(unittest.TestCase):
         """
         save updated_at
         """
+        print('test_save')
         dum1 = self.dummy.updated_at
         self.dummy.save()
         dum2 = self.dummy.updated_at
@@ -102,6 +109,7 @@ class TestBaseClass(unittest.TestCase):
         """
         dictionary conversion
         """
+        print('test_to_dict')
         self.dummy.name = "Akeem"
         self.dummy.my_number = 89
         dicti = self.dummy.to_dict()
@@ -120,6 +128,7 @@ class TestBaseClass(unittest.TestCase):
         """
         created_at, updated_at values
         """
+        print('test_to_dict_attr')
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
         dicti = self.dummy.to_dict()
         self.assertEqual(dicti["created_at"],
