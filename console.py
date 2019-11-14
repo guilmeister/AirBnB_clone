@@ -55,6 +55,27 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("BaseModel {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("BaseModel {}".format(string))
+        elif arg.startswith(".update("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            string_arg = string.split(',')
+            if string_arg[0] is '':
+                print("** instance id missing **")
+            elif len(string_arg) is 1:
+                print("** attribute name missing **")
+            elif len(string_arg) is 2:
+                print("** value missing **")
+            elif len(string_arg) is 3:
+                new_string_arg = (string_arg[0] + " " +
+                                  string_arg[1] + " " +
+                                  string_arg[2])
+                self.do_update("BaseModel {}".format(new_string_arg))
 
     def do_User(self, arg):
         """
@@ -70,6 +91,27 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("User {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("User {}".format(string))
+        elif arg.startswith(".update("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            string_arg = string.split(',')
+            if string_arg[0] is '':
+                print("** instance id missing **")
+            elif len(string_arg) is 1:
+                print("** attribute name missing **")
+            elif len(string_arg) is 2:
+                print("** value missing **")
+            elif len(string_arg) is 3:
+                new_string_arg = (string_arg[0] + " " +
+                                  string_arg[1] + " " +
+                                  string_arg[2])
+                self.do_update("User {}".format(new_string_arg))
 
     def do_State(self, arg):
         """
@@ -85,6 +127,27 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("State {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("State {}".format(string))
+        elif arg.startswith(".update("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            string_arg = string.split(',')
+            if string_arg[0] is '':
+                print("** instance id missing **")
+            elif len(string_arg) is 1:
+                print("** attribute name missing **")
+            elif len(string_arg) is 2:
+                print("** value missing **")
+            elif len(string_arg) is 3:
+                new_string_arg = (string_arg[0] + " " +
+                                  string_arg[1] + " " +
+                                  string_arg[2])
+                self.do_update("State {}".format(new_string_arg))
 
     def do_City(self, arg):
         """
@@ -100,6 +163,27 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("City {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("City {}".format(string))
+        elif arg.startswith(".update("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            string_arg = string.split(',')
+            if string_arg[0] is '':
+                print("** instance id missing **")
+            elif len(string_arg) is 1:
+                print("** attribute name missing **")
+            elif len(string_arg) is 2:
+                print("** value missing **")
+            elif len(string_arg) is 3:
+                new_string_arg = (string_arg[0] + " " +
+                                  string_arg[1] + " " +
+                                  string_arg[2])
+                self.do_update("City {}".format(new_string_arg))
 
     def do_Amenity(self, arg):
         """
@@ -115,6 +199,27 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("Amenity {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("Amenity {}".format(string))
+        elif arg.startswith(".update("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            string_arg = string.split(',')
+            if string_arg[0] is '':
+                print("** instance id missing **")
+            elif len(string_arg) is 1:
+                print("** attribute name missing **")
+            elif len(string_arg) is 2:
+                print("** value missing **")
+            elif len(string_arg) is 3:
+                new_string_arg = (string_arg[0] + " " +
+                                  string_arg[1] + " " +
+                                  string_arg[2])
+                self.do_update("Amenity {}".format(new_string_arg))
 
     def do_Place(self, arg):
         """
@@ -130,6 +235,27 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("Place {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("Place {}".format(string))
+        elif arg.startswith(".update("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            string_arg = string.split(',')
+            if string_arg[0] is '':
+                print("** instance id missing **")
+            elif len(string_arg) is 1:
+                print("** attribute name missing **")
+            elif len(string_arg) is 2:
+                print("** value missing **")
+            elif len(string_arg) is 3:
+                new_string_arg = (string_arg[0] + " " +
+                                  string_arg[1] + " " +
+                                  string_arg[2])
+                self.do_update("Place {}".format(new_string_arg))
 
     def do_Review(self, arg):
         """
@@ -145,6 +271,27 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("Review {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("Review {}".format(string))
+        elif arg.startswith(".update("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            string_arg = string.split(',')
+            if string_arg[0] is '':
+                print("** instance id missing **")
+            elif len(string_arg) is 1:
+                print("** attribute name missing **")
+            elif len(string_arg) is 2:
+                print("** value missing **")
+            elif len(string_arg) is 3:
+                new_string_arg = (string_arg[0] + " " +
+                                  string_arg[1] + " " +
+                                  string_arg[2])
+                self.do_update("Review {}".format(new_string_arg))
 
     def do_quit(self, arg):
         """
@@ -198,7 +345,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        ls_arg = arg.split(' ')
+        ls_arg = shlex.split(arg)
         if ls_arg[0] not in ['BaseModel', 'User', 'State',
                              'City', 'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
@@ -261,7 +408,7 @@ class HBNBCommand(cmd.Cmd):
         Function that has Update command to update already
         existing instances in a class
         """
-        ls_arg = arg.split(' ')
+        ls_arg = shlex.split(arg)
         num_arg = len(arg)
         if not arg:
             print("** class name missing **")
