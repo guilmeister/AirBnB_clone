@@ -8,6 +8,7 @@ import unittest
 import pep8
 
 
+
 class TestCity(unittest.TestCase):
     """Test the City class"""
     @classmethod
@@ -23,13 +24,12 @@ class TestCity(unittest.TestCase):
         Run at end after test
         """
         print('tearDownClass City')
-    
-    
+
     def setUp(self):
         print('setup')
         self.city = City()
         self.c = City()
- 
+
     def tearDown(self):
         """teardown method"""
         print('Teardown')
@@ -37,7 +37,6 @@ class TestCity(unittest.TestCase):
 
     def test_is_subclass(self):
         """Test that City is a subclass of BaseModel"""
-
         self.assertIsInstance(self.city, BaseModel)
         self.assertTrue(hasattr(self.city, "id"))
         self.assertTrue(hasattr(self.city, "updated_at"))
@@ -63,14 +62,16 @@ class TestCity(unittest.TestCase):
         self.assertEqual(new_d["__class__"], "City")
         self.assertEqual(type(new_d["created_at"]), str)
         self.assertEqual(type(new_d["updated_at"]), str)
-        self.assertEqual(new_d["created_at"], self.c.created_at.strftime(t_format))
-        self.assertEqual(new_d["updated_at"], self.c.updated_at.strftime(t_format))
+        self.assertEqual(new_d["created_at"],
+                         self.c.created_at.strftime(t_format))
+        self.assertEqual(new_d["updated_at"],
+                         self.c.updated_at.strftime(t_format))
 
     def test_str(self):
         """test that the str method has the correct output"""
         string = "[City] ({}) {}".format(self.city.id, self.city.__dict__)
         self.assertEqual(string, str(self.city))
-    
+
     def test_inheritence(self):
         """Checks to make sure City inherits from BaseModel"""
         self.assertTrue(issubclass(City, BaseModel))    
