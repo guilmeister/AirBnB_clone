@@ -55,6 +55,11 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("BaseModel {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("BaseModel {}".format(string))
 
     def do_User(self, arg):
         """
@@ -70,6 +75,11 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("User {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("User {}".format(string))
 
     def do_State(self, arg):
         """
@@ -85,6 +95,11 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("State {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("State {}".format(string))
 
     def do_City(self, arg):
         """
@@ -100,6 +115,11 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("City {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("City {}".format(string))
 
     def do_Amenity(self, arg):
         """
@@ -115,6 +135,11 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("Amenity {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("Amenity {}".format(string))
 
     def do_Place(self, arg):
         """
@@ -130,6 +155,11 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("Place {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("Place {}".format(string))
 
     def do_Review(self, arg):
         """
@@ -145,6 +175,11 @@ class HBNBCommand(cmd.Cmd):
             split = ls_arg[1].split('(', 1)
             string = split[1][:-1]
             self.do_show("Review {}".format(string))
+        elif arg.startswith(".destroy("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_destroy("Review {}".format(string))
 
     def do_quit(self, arg):
         """
@@ -198,7 +233,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        ls_arg = arg.split(' ')
+        ls_arg = shlex.split(arg)
         if ls_arg[0] not in ['BaseModel', 'User', 'State',
                              'City', 'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
