@@ -5,6 +5,8 @@ import inspect
 from models.city import City
 from models.base_model import BaseModel
 import unittest
+import pep8
+
 
 class TestCity(unittest.TestCase):
     """Test the City class"""
@@ -42,11 +44,10 @@ class TestCity(unittest.TestCase):
 
     def test_name_attr(self):
         """Test that City has attribute name, and it's an empty string"""
-
         self.assertTrue(hasattr(self.city, "name"))
+
     def test_to_dict_creates_dict(self):
-        """test to_dict method creates a dictionary with proper attrs"""
-        
+        """test to_dict method creates a dictionary with proper attrs""" 
         new_d = self.c.to_dict()
         self.assertEqual(type(new_d), dict)
         self.assertFalse("_sa_instance_state" in new_d)
@@ -57,7 +58,6 @@ class TestCity(unittest.TestCase):
 
     def test_to_dict_values(self):
         """test that values in dict returned from to_dict are correct"""
-
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         new_d = self.c.to_dict()
         self.assertEqual(new_d["__class__"], "City")
@@ -68,17 +68,21 @@ class TestCity(unittest.TestCase):
 
     def test_str(self):
         """test that the str method has the correct output"""
-
         string = "[City] ({}) {}".format(self.city.id, self.city.__dict__)
         self.assertEqual(string, str(self.city))
     
     def test_inheritence(self):
         """Checks to make sure City inherits from BaseModel"""
-
         self.assertTrue(issubclass(City, BaseModel))    
     
     def test_new_instances(self):
         """Checks that new instances were created"""
-
         self.assertTrue(self.city)
         self.assertTrue(self.city)
+    
+    def test_pep8_conformance(self):
+       """Test that we conform to PEP8."""
+       pep8style = pep8.StyleGuide(quiet=True)
+       result = pep8style.check_files(['models/city.py'])
+       self.assertEqual(result.total_errors, 0,
+         "Found code style errors (and warnings).")
