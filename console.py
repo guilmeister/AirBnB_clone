@@ -7,6 +7,7 @@ This is a module for the Console class
 import cmd
 import inspect
 import models
+import shlex
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -29,6 +30,9 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def count_instance_class(self, arg):
+        """
+        Function that counts all instances of a specific class
+        """
         count = 0
         ls_arg = arg.split(' ')
         for key in models.storage.all():
@@ -38,53 +42,109 @@ class HBNBCommand(cmd.Cmd):
         return count
 
     def do_BaseModel(self, arg):
+        """
+        Function that does all advanced tasks for class BaseModel
+        """
         if arg == ".all()":
             self.do_all("BaseModel")
         elif arg == ".count()":
             counter = self.count_instance_class("BaseModel")
             print(counter)
+        elif arg.startswith(".show("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_show("BaseModel {}".format(string))
 
     def do_User(self, arg):
+        """
+        Function that does all advanced tasks for class User
+        """
         if arg == ".all()":
             self.do_all("User")
         elif arg == ".count()":
             counter = self.count_instance_class("User")
             print(counter)
+        elif arg.startswith(".show("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_show("User {}".format(string))
 
     def do_State(self, arg):
+        """
+        Function that does all advanced tasks for class State
+        """
         if arg == ".all()":
             self.do_all("State")
         elif arg == ".count()":
             counter = self.count_instance_class("State")
             print(counter)
+        elif arg.startswith(".show("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_show("State {}".format(string))
 
     def do_City(self, arg):
+        """
+        Function that does all advanced tasks for class City
+        """
         if arg == ".all()":
             self.do_all("City")
         elif arg == ".count()":
             counter = self.count_instance_class("City")
             print(counter)
+        elif arg.startswith(".show("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_show("City {}".format(string))
 
     def do_Amenity(self, arg):
+        """
+        Function that does all advanced tasks for class Amenity
+        """
         if arg == ".all()":
             self.do_all("Amenity")
         elif arg == ".count()":
             counter = self.count_instance_class("Amenity")
             print(counter)
+        elif arg.startswith(".show("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_show("Amenity {}".format(string))
 
     def do_Place(self, arg):
+        """
+        Function that does all advanced tasks for class Place
+        """
         if arg == ".all()":
             self.do_all("Place")
         elif arg == ".count()":
             counter = self.count_instance_class("Place")
             print(counter)
+        elif arg.startswith(".show("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_show("Place {}".format(string))
 
     def do_Review(self, arg):
+        """
+        Function that does all advanced tasks for class Review
+        """
         if arg == ".all()":
             self.do_all("Review")
         elif arg == ".count()":
             counter = self.count_instance_class("Review")
             print(counter)
+        elif arg.startswith(".show("):
+            ls_arg = arg.split('.')
+            split = ls_arg[1].split('(', 1)
+            string = split[1][:-1]
+            self.do_show("Review {}".format(string))
 
     def do_quit(self, arg):
         """
@@ -160,7 +220,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        ls_arg = arg.split(' ')
+        ls_arg = shlex.split(arg)
         if ls_arg[0] not in ['BaseModel', 'User', 'State',
                              'City', 'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
