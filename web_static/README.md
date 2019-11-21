@@ -1,0 +1,1 @@
+This directory is for Web Static on AirBnB clone
