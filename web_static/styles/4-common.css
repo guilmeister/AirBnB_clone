@@ -3,7 +3,16 @@ body {
 	padding: 0;
     text-align:center;
     text-align:middle;
-	font-color: #484848
+	font-color:#484848;
 	font-size: 14px;
 	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+div.container {
+	display: grid;
+	max-width: 1000px;
+	margin: 30px auto;
+	display: flex;
+	height: 100vh;
+}
+
